@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  convert-currency-api:
+    image: tmacedoc/convert-currency-api:v1
+    container_name: convert-currency-api-container
+    environment:
+      - EXCHANGE_RATE_API_URL=https://v6.exchangerate-api.com/v6
+      - DB_JDBC_URL=jdbc:h2:mem:exchange_rate_db
+      - DB_USERNAME=sa
+      - DB_PASSWORD=sa
+      - H2_CONSOLE_ENABLED=true
+      - H2_CONSOLE_PATH=/h2-console
+    ports:
+      - "8080:8080"
