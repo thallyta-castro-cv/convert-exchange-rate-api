@@ -8,6 +8,7 @@ import domain.ExchangeRate;
 import infraestructure.exceptions.CurrencyNotSupportedException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -18,7 +19,8 @@ import java.util.Optional;
 @ApplicationScoped
 public class ConvertCurrencyUseCases implements ConvertCurrency {
 
-    String apiKey = "fb9f07fc148a077bacfa5b70";
+    @ConfigProperty(name = "exchange.rate.api.key")
+    String apiKey;
 
     @Inject
     @RestClient
